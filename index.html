@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anvay — a campus community for mentorship and collaborative projects." />
+  <title>Anvay | Campus Connect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">a</span><span>anvay<span class="brand-dot">.</span><small>CAMPUS CONNECT</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav>
+        <button class="nav-item active" data-view="overview"><span>◫</span> Overview</button>
+        <button class="nav-item" data-view="mentors"><span>♧</span> Find a mentor</button>
+        <button class="nav-item" data-view="projects"><span>▤</span> Project board</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">✦</div><strong>Grow together.</strong><p>Great things happen when campus minds connect.</p></div>
+        <div class="profile-mini"><div class="avatar avatar-purple">S</div><div><strong id="sidebar-name">Student</strong><small>Campus member</small></div><button id="logout-btn" title="Sign out">↗</button></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="eyebrow">SHRI VISHNU ENGINEERING COLLEGE FOR WOMEN</div><div class="top-title">Your campus, connected.</div></div>
+        <div class="top-actions"><span class="secure-pill"><span></span> Campus community</span><div class="avatar avatar-purple" id="top-avatar">S</div></div>
+      </header>
+
+      <section id="login-view" class="login-wrap">
+        <div class="login-art">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-center">a<span>.</span></div>
+          <div class="floating-note note-one">✦ Find your people</div>
+          <div class="floating-note note-two">↗ Build something great</div>
+          <div class="art-caption"><span>ONE CAMPUS.</span><br>ENDLESS POSSIBILITIES.</div>
+        </div>
+        <div class="login-panel">
+          <div class="eyebrow">WELCOME TO ANVAY</div>
+          <h1>Make your<br><em>next connection.</em></h1>
+          <p class="muted">A shared space to learn from mentors, discover projects and build with your campus community.</p>
+          <form id="login-form">
+            <label for="student-name">Your name</label>
+            <input id="student-name" type="text" placeholder="e.g. Kavya" required minlength="2" />
+            <label for="student-email">College email</label>
+            <input id="student-email" type="email" placeholder="name@svecw.edu.in" required />
+            <p class="form-hint" id="login-hint">Use your @svecw.edu.in email to enter the demo.</p>
+            <button class="primary-btn full" type="submit">Enter Anvay <span>→</span></button>
+          </form>
+          <p class="tiny-note">Demo sign-in · No password or real account is created.</p>
+        </div>
+      </section>
+
+      <section id="app-view" class="hidden">
+        <div class="welcome-row"><div><div class="eyebrow">YOUR CAMPUS SPACE</div><h1>Good to see you, <span id="welcome-name">there</span> <span class="wave">✳</span></h1><p class="muted">Find guidance. Share ideas. Make progress together.</p></div><button class="primary-btn" id="explore-btn">Explore community <span>→</span></button></div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-icon lavender">♧</div><div class="stat-number">12</div><div class="stat-label">Mentors to explore</div><div class="stat-foot">Learn from experience</div></article>
+          <article class="stat-card"><div class="stat-icon peach">▤</div><div class="stat-number" id="project-count">8</div><div class="stat-label">Open project ideas</div><div class="stat-foot">Ideas looking for teammates</div></article>
+          <article class="stat-card"><div class="stat-icon mint">✦</div><div class="stat-number">3</div><div class="stat-label">Campus domains</div><div class="stat-foot">Connect across interests</div></article>
+          <article class="stat-card feature-stat"><div class="feature-spark">✳</div><div><strong>Your next step starts here.</strong><p>One conversation can change the way you see a problem.</p></div></article>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">GET STARTED</div><h2>Make your move</h2></div></div>
+        <div class="action-grid">
+          <article class="action-card mentor-card"><div class="action-top"><span class="action-icon">♧</span><span class="card-arrow">↗</span></div><h3>Find a mentor</h3><p>Get guidance from seniors and faculty who can help you take your next step.</p><button class="text-btn" data-go="mentors">Explore mentors <span>→</span></button></article>
+          <article class="action-card project-card"><div class="action-top"><span class="action-icon">▤</span><span class="card-arrow">↗</span></div><h3>Discover projects</h3><p>Browse faculty-led ideas, find collaborators and turn curiosity into action.</p><button class="text-btn" data-go="projects">View project board <span>→</span></button></article>
+        </div>
+        <div class="section-heading recent-heading"><div><div class="eyebrow">A PLACE TO BEGIN</div><h2>Featured opportunities</h2></div><button class="subtle-btn" data-go="projects">View all →</button></div>
+        <div id="featured-projects" class="project-preview-grid"></div>
+      </section>
+
+      <section id="mentors-view" class="content-view hidden">
+        <div class="page-heading"><div><div class="eyebrow">LEARN FROM EXPERIENCE</div><h1>Find a mentor<span class="accent">.</span></h1><p class="muted">Explore people who can help you navigate your learning journey.</p></div></div>
+        <div class="toolbar"><input id="mentor-search" class="search-input" placeholder="Search by name or expertise..." /><select id="mentor-domain"><option value="all">All domains</option><option>Web Development</option><option>Artificial Intelligence</option><option>Career Guidance</option><option>Electronics</option></select></div>
+        <div id="mentor-grid" class="mentor-grid"></div>
+      </section>
+
+      <section id="projects-view" class="content-view hidden">
+        <div class="page-heading page-heading-row"><div><div class="eyebrow">IDEAS BECOME REALITY</div><h1>Project board<span class="accent">.</span></h1><p class="muted">Discover faculty-led initiatives and find your project team.</p></div><button class="primary-btn" id="add-project-btn">＋ Share an idea</button></div>
+        <div class="toolbar"><input id="project-search" class="search-input" placeholder="Search projects or skills..." /><select id="project-domain"><option value="all">All domains</option><option>AI & Data</option><option>Web Development</option><option>Social Impact</option><option>Electronics</option></select></div>
+        <div id="project-grid" class="project-grid"></div>
+      </section>
+
+      <footer class="footer"><span>ANVAY · CAMPUS CONNECT</span><span>Built to bring campus minds together.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="project-modal">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      <div class="eyebrow">ADD TO THE COMMUNITY</div><h2>Share a project idea</h2><p class="muted">Post an idea and invite other students to collaborate.</p>
+      <form id="project-form">
+        <label for="new-title">Project title</label><input id="new-title" required maxlength="70" placeholder="What are you building?" />
+        <label for="new-domain">Domain</label><select id="new-domain"><option>AI & Data</option><option>Web Development</option><option>Social Impact</option><option>Electronics</option></select>
+        <label for="new-description">Short description</label><textarea id="new-description" required maxlength="220" rows="3" placeholder="Describe the problem or idea..."></textarea>
+        <label for="new-skills">Skills needed (comma separated)</label><input id="new-skills" placeholder="Python, UI/UX, Research" />
+        <button class="primary-btn full" type="submit">Publish idea <span>→</span></button>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
